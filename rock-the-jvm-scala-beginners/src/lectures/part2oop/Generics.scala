@@ -3,7 +3,7 @@ package lectures.part2oop
 object Generics extends App {
 
   class MyList[A] {
-    // use the type A
+    // use the type A and accept any subclasses of type A and call it B
     def add[B >: A](element: B) : MyList[B] = ???
     /*
     A = Cat
