@@ -25,16 +25,18 @@ object WhatsAFunction extends App {
     override def apply(a: String, b: String): String = a + b
   }
 
-  println (stringConcat("a", " c"))
+  println (stringConcat("Hello ", "Scala"))
 
-  def sqInt = (a: Int) => {
-    a * a
+  // Function1[Int, Function1[Int, Int]]
+  val superAdder: Function1[Int, Function1[Int, Int]] = new Function1[Int, Function1[Int, Int]] {
+    override def apply(x: Int): Function1[Int, Int] = new Function1[Int, Int]{
+      override def apply(y: Int): Int = x + y
+    }
   }
 
-  def myFunc = (a: Int) =>  sqInt(a)
-
-  println(myFunc(4))
-
+  val adder3 = superAdder(3)
+  println(adder3(4))
+  println(superAdder(3)(4)) // curried function
 
 }
 
